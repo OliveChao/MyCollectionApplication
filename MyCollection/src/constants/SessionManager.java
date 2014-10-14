@@ -7,11 +7,12 @@ import com.example.mycollection.HomeActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class SessionManager {
 	
 	SharedPreferences sharedPreferences;
-	SharedPreferences.Editor editor;
+	Editor editor;
 	Context _context; 
 	
 	
@@ -31,6 +32,8 @@ public class SessionManager {
 		this._context = context;
 		sharedPreferences = _context.getSharedPreferences(Constants.PREFS_NAME, 0);
 		editor = sharedPreferences.edit();
+		
+		editor.commit();
 	}
 	
 	/**
