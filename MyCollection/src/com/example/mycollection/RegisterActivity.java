@@ -45,6 +45,7 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 		public static final String KEY_EMAIL="email";
 		public static final String KEY_USERNAME="userName";
 		public static final String KEY_PASSWORD="password";
+		public static final String KEY_CONFIRMPASSWORD ="confirmPassword";
 		
 		SharedPreferences sharedPreferences;
 		Editor editor;
@@ -77,15 +78,30 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 		//Setting an onClickListener to the button
 		btnRegister.setOnClickListener(this);
 		
-		//EditText getText and converted to string
-		etConfirmPassword.getText().toString();
-		
-		//Call the getSharedPreferences()method
-		//creates the shared preference method of storage 
+		//Create the sharedPreference means of storage by calling the getSharedPreferences()method
 		sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
 		
 		//editor to get data
 		editor = sharedPreferences.edit();
+		
+		//store data
+		editor.putString(KEY_FIRSTNAME, etFirstName.getText().toString());
+		editor.putString(KEY_LASTNAME, etLastName.getText().toString());
+		editor.putString(KEY_EMAIL, etEmailAddress.getText().toString());
+		editor.putString(KEY_USERNAME, etUserName.getText().toString());
+		editor.putString(KEY_PASSWORD, etPassword.getText().toString());
+		editor.putString(KEY_CONFIRMPASSWORD, etConfirmPassword.getText().toString());
+		
+		//return data
+		sharedPreferences.getString(KEY_FIRSTNAME, null);
+		sharedPreferences.getString(KEY_LASTNAME, null);
+		sharedPreferences.getString(KEY_EMAIL, null);
+		sharedPreferences.getString(KEY_USERNAME, null);
+		sharedPreferences.getString(KEY_PASSWORD, null);
+		sharedPreferences.getString(KEY_CONFIRMPASSWORD, null);
+		
+		//commit changes
+		editor.commit();
 		
 	}
 
@@ -108,52 +124,48 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 			//checks if fields are all empty and prompts user to fill them
 			//store inputs in shared preference
 			
-			
-			//commit changes
-			editor.commit();
-			
 			if (etFirstName.getText().toString().equals("")
-					&&etLastName.equals("")
-					&&etEmailAddress.equals("")
-					&&etUserName.equals("")
-					&&etPassword.equals("")
-					&&etConfirmPassword.equals("")) {
+					&&etLastName.getText().toString().equals("")
+					&&etEmailAddress.getText().toString().equals("")
+					&&etUserName.getText().toString().equals("")
+					&&etPassword.getText().toString().equals("")
+					&&etConfirmPassword.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Fields empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if first name is empty and prompts user to fill it
-			else if (etFirstName.equals("")) {
+			else if (etFirstName.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "First Name empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if last name is empty and prompts user to fill it
-			else if (etLastName.equals("")) {
+			else if (etLastName.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Last Name empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if email address is empty and prompts user to fill it
-			else if (etEmailAddress.equals("")) {
+			else if (etEmailAddress.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Email Address empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if user name is empty and prompts user to fill it
-			else if (etUserName.equals("")) {
+			else if (etUserName.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "User Name empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if password is empty and prompts user to fill it
-			else if (etPassword.equals("")) {
+			else if (etPassword.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Password empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if confirm password is empty and prompts user to fill it
-			else if (etConfirmPassword.equals("")) {
+			else if (etConfirmPassword.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Confirm Password empty", Toast.LENGTH_LONG).show();
 			}
 			//checks if the content of confirm password is equal to the password if not prompts user to correct it
 			//else if (!etConfirmPassword.equals(sharedPreferences.getString(KEY_PASSWORD, null))) {
 				//Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_LONG).show();
 			//}
-			else if(!etFirstName.equals("")
-					&&etLastName.equals("")
-					&&etEmailAddress.equals("")
-					&&etUserName.equals("")
-					&&etPassword.equals("")
-					&&etConfirmPassword.equals("")){
+			else if(!etFirstName.getText().toString().equals(sharedPreferences.getString(KEY_FIRSTNAME, null))
+					&&!etLastName.getText().toString().equals(sharedPreferences.getString(KEY_LASTNAME, null))
+					&&!etEmailAddress.getText().toString().equals(sharedPreferences.getString(KEY_EMAIL, null))
+					&&!etUserName.getText().toString().equals(sharedPreferences.getString(KEY_USERNAME, null))
+					&&!etPassword.getText().toString().equals(sharedPreferences.getString(KEY_PASSWORD, null))
+					&&!etConfirmPassword.getText().toString().equals(sharedPreferences.getString(KEY_CONFIRMPASSWORD, null))){
 				
 				//after validation process user can navigate to home activity at the click of register button
 				startActivity(new Intent(getApplicationContext(),HomeActivity.class));
