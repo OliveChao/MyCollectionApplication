@@ -6,6 +6,10 @@ package com.example.mycollection;
  * Login Page Activity
  */
 
+import java.util.HashMap;
+
+import constants.Constants;
+import constants.SessionManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +21,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 
 public class LoginActivity extends ActionBarActivity implements OnClickListener, OnCheckedChangeListener {
@@ -33,6 +39,10 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 	CheckBox checkBoxRemMe;
 	TextView tvForgotPassword, tvRegister;
 	Button btnLogin;
+	
+	//common
+	Constants commonCode;
+	SessionManager session;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +79,15 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 		tvForgotPassword.setOnClickListener(this);
 		tvRegister.setOnClickListener(this);
 		
+		//call the sessionManager class
+	    session = new SessionManager(getApplicationContext());
+	    
+	    //user logged in
+	    session.LogedIn();
+	    //check user details
+	    HashMap<String, String> user = session.getUserDetails();
+	    String strUserName = user.get(Constants.KEY_HASHMAP_USERNAME);
+	    String strPassword = user.get(Constants.KEY_HASHMAP_PASSWORD);
 	}
 
 	@Override
@@ -93,21 +112,31 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 	    	
 	    case R.id.btnLogin:
 	    	//checks if both user name and password are empty and prompts user to fill them in
-	    	if (etUserName.equals("")
-	    			&&etPassword.equals("")) {
+	    	if (etUserName.getText().toString().equals("")
+	    			&&etPassword.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "UserName and Password empty", Toast.LENGTH_LONG).show();
 			}
 	    	//checks if user name is empty and prompts user to fill it
-	    	else if (etUserName.equals("")) {
+	    	else if (etUserName.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "User Name empty", Toast.LENGTH_LONG).show();
 			}
 	    	//checks if password is empty and prompts user to fill it
-	    	else if (etPassword.equals("")) {
+	    	else if (etPassword.getText().toString().equals("")) {
 				Toast.makeText(getApplicationContext(), "Password empty", Toast.LENGTH_LONG).show();
-				
 			}
-	    	//after validation user can navigate to home activity on clicking login button
-	    	startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+	    	else if (!etUserName.getText().toString().equals(session.getUserDetails())){
+	    		Toast.makeText(getApplicationContext(), "User Name incorrect", Toast.LENGTH_LONG).show();
+	    	}
+	    	else if (!etPassword.getText().toString().equals(session.getUserDetails())){
+	    		Toast.makeText(getApplicationContext(), "Password incorrect", Toast.LENGTH_LONG).show();
+	    	}
+	    	else if (etUserName.getText().toString().equals(session.getUserDetails())
+				       &&etPassword.getText().toString().equals(session.getUserDetails())){
+	    		//after validation user can navigate to home activity on clicking login button
+		    	startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+		    	Toast.makeText(getApplicationContext(), "Welcome to the Home Page", Toast.LENGTH_LONG).show();
+			}
+	    	
 	    	
 	    	break;
 
