@@ -9,6 +9,7 @@ public class Constants {
 	public static final String KEY_EMAIL="email";
 	public static final String KEY_USERNAME="userName";
 	public static final String KEY_PASSWORD="password";
+	public static final String KEY_CONFIRMPASSWORD ="confirmPassword";
 	public static final String State = "false";
 
 	//hashMaps
@@ -18,3 +19,4 @@ public class Constants {
 	public static final String KEY_HASHMAP_USERNAME="userName";
 	public static final String KEY_HASHMAP_PASSWORD="password";
 }
+
