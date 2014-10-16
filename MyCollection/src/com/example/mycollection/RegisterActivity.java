@@ -11,6 +11,8 @@ package com.example.mycollection;
  */
 
 
+import constants.Constants;
+import constants.SessionManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,9 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 
 public class RegisterActivity extends ActionBarActivity implements OnClickListener, OnCheckedChangeListener {
@@ -38,17 +37,9 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 	CheckBox chkBoxTermsConditions;
 	Button btnRegister;
 
-	//shared preferences
-		public static final String PREFS_NAME="myPrefs"; 
-		public static final String KEY_FIRSTNAME="firstName";
-		public static final String KEY_LASTNAME="lastName";
-		public static final String KEY_EMAIL="email";
-		public static final String KEY_USERNAME="userName";
-		public static final String KEY_PASSWORD="password";
-		public static final String KEY_CONFIRMPASSWORD ="confirmPassword";
-		
-		SharedPreferences sharedPreferences;
-		Editor editor;
+	//classes
+	Constants myConstants;
+	SessionManager session;
 
 	
 	@Override
@@ -78,30 +69,19 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 		//Setting an onClickListener to the button
 		btnRegister.setOnClickListener(this);
 		
-		//Create the sharedPreference means of storage by calling the getSharedPreferences()method
-		sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
-		
-		//editor to get data
-		editor = sharedPreferences.edit();
+		//Instantiate classes
+		myConstants = new Constants();
+		session = new SessionManager(getApplicationContext());
 		
 		//store data
-		editor.putString(KEY_FIRSTNAME, etFirstName.getText().toString());
-		editor.putString(KEY_LASTNAME, etLastName.getText().toString());
-		editor.putString(KEY_EMAIL, etEmailAddress.getText().toString());
-		editor.putString(KEY_USERNAME, etUserName.getText().toString());
-		editor.putString(KEY_PASSWORD, etPassword.getText().toString());
-		editor.putString(KEY_CONFIRMPASSWORD, etConfirmPassword.getText().toString());
+		etFirstName.getText().toString();
+		etLastName.getText().toString();
+		etEmailAddress.getText().toString();
+		etUserName.getText().toString();
+		etPassword.getText().toString();
+		etConfirmPassword.getText().toString();
 		
-		//return data
-		sharedPreferences.getString(KEY_FIRSTNAME, null);
-		sharedPreferences.getString(KEY_LASTNAME, null);
-		sharedPreferences.getString(KEY_EMAIL, null);
-		sharedPreferences.getString(KEY_USERNAME, null);
-		sharedPreferences.getString(KEY_PASSWORD, null);
-		sharedPreferences.getString(KEY_CONFIRMPASSWORD, null);
 		
-		//commit changes
-		editor.commit();
 		
 	}
 
@@ -123,6 +103,14 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 		case R.id.btnRegister:
 			//checks if fields are all empty and prompts user to fill them
 			//store inputs in shared preference
+			
+			session.createUserDetails(
+					etLastName.getText().toString(), 
+					etEmailAddress.getText().toString(),
+					etUserName.getText().toString(), 
+					etPassword.getText().toString(), 
+					etConfirmPassword.getText().toString()
+					);
 			
 			if (etFirstName.getText().toString().equals("")
 					&&etLastName.getText().toString().equals("")
@@ -160,17 +148,17 @@ public class RegisterActivity extends ActionBarActivity implements OnClickListen
 			//else if (!etConfirmPassword.equals(sharedPreferences.getString(KEY_PASSWORD, null))) {
 				//Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_LONG).show();
 			//}
-			else if(!etFirstName.getText().toString().equals(sharedPreferences.getString(KEY_FIRSTNAME, null))
-					&&!etLastName.getText().toString().equals(sharedPreferences.getString(KEY_LASTNAME, null))
-					&&!etEmailAddress.getText().toString().equals(sharedPreferences.getString(KEY_EMAIL, null))
-					&&!etUserName.getText().toString().equals(sharedPreferences.getString(KEY_USERNAME, null))
-					&&!etPassword.getText().toString().equals(sharedPreferences.getString(KEY_PASSWORD, null))
-					&&!etConfirmPassword.getText().toString().equals(sharedPreferences.getString(KEY_CONFIRMPASSWORD, null))){
-				
-				//after validation process user can navigate to home activity at the click of register button
-				startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-				Toast.makeText(getApplicationContext(), "Welcome to the HomeScreen", Toast.LENGTH_LONG).show();
-			}
+//			else if(!etFirstName.getText().toString().equals(sharedPreferences.getString(KEY_FIRSTNAME, null))
+//					&&!etLastName.getText().toString().equals(sharedPreferences.getString(KEY_LASTNAME, null))
+//					&&!etEmailAddress.getText().toString().equals(sharedPreferences.getString(KEY_EMAIL, null))
+//					&&!etUserName.getText().toString().equals(sharedPreferences.getString(KEY_USERNAME, null))
+//					&&!etPassword.getText().toString().equals(sharedPreferences.getString(KEY_PASSWORD, null))
+//					&&!etConfirmPassword.getText().toString().equals(sharedPreferences.getString(KEY_CONFIRMPASSWORD, null))){
+//				
+//				//after validation process user can navigate to home activity at the click of register button
+//				startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+//				Toast.makeText(getApplicationContext(), "Welcome to the HomeScreen", Toast.LENGTH_LONG).show();
+//			}
 			
 			break;
 
