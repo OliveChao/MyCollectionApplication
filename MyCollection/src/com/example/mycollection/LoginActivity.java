@@ -21,8 +21,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 
 public class LoginActivity extends ActionBarActivity implements OnClickListener, OnCheckedChangeListener {
@@ -79,15 +77,11 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 		tvForgotPassword.setOnClickListener(this);
 		tvRegister.setOnClickListener(this);
 		
+		//call constants
+		commonCode = new Constants();
+		
 		//call the sessionManager class
 	    session = new SessionManager(getApplicationContext());
-	    
-	    //user logged in
-	    session.LogedIn();
-	    //check user details
-	    HashMap<String, String> user = session.getUserDetails();
-	    String strUserName = user.get(Constants.KEY_HASHMAP_USERNAME);
-	    String strPassword = user.get(Constants.KEY_HASHMAP_PASSWORD);
 	}
 
 	@Override
@@ -111,6 +105,11 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 	    	break;
 	    	
 	    case R.id.btnLogin:
+	    	//get details from session manager
+	    	HashMap<String, String> details = session.getUserDetails();
+	    	String strUserName = details.get(Constants.KEY_HASHMAP_USERNAME);
+	    	String strPassword = details.get(Constants.KEY_HASHMAP_PASSWORD);
+	    	
 	    	//checks if both user name and password are empty and prompts user to fill them in
 	    	if (etUserName.getText().toString().equals("")
 	    			&&etPassword.getText().toString().equals("")) {
@@ -130,8 +129,8 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 	    	else if (!etPassword.getText().toString().equals(session.getUserDetails())){
 	    		Toast.makeText(getApplicationContext(), "Password incorrect", Toast.LENGTH_LONG).show();
 	    	}
-	    	else if (etUserName.getText().toString().equals(session.getUserDetails())
-				       &&etPassword.getText().toString().equals(session.getUserDetails())){
+	    	else if (etUserName.getText().toString().equals(strUserName)
+				       &&etPassword.getText().toString().equals(strPassword)){
 	    		//after validation user can navigate to home activity on clicking login button
 		    	startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 		    	Toast.makeText(getApplicationContext(), "Welcome to the Home Page", Toast.LENGTH_LONG).show();
