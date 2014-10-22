@@ -7,5 +7,7 @@
     <string name="taka_app">Taka App</string>
     <string name="submit">Submit</string>
     <string name="quantity">Enter Quantity</string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_activity_conclusion_screen">ConclusionScreenActivity</string>
 
 </resources>
