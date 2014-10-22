@@ -32,8 +32,6 @@ public class SessionManager {
 		this._context = context;
 		sharedPreferences = _context.getSharedPreferences(Constants.PREFS_NAME, 0);
 		editor = sharedPreferences.edit();
-		
-		editor.commit();
 	}
 	
 	/**
