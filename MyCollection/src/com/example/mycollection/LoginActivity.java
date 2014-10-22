@@ -135,8 +135,6 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener,
 		    	startActivity(new Intent(getApplicationContext(),HomeActivity.class));
 		    	Toast.makeText(getApplicationContext(), "Welcome to the Home Page", Toast.LENGTH_LONG).show();
 			}
-	    	
-	    	
 	    	break;
 
 		default:
