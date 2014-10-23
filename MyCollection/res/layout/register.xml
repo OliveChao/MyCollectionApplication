@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+<<<<<<< HEAD
+=======
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_style"
+        android:text="@string/sign_up"
+        android:textColor="@android:color/white" />
+
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+    <EditText
+        android:id="@+id/etRegisterLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etRegisterFirstName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="5dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <EditText
+        android:id="@+id/etRegisterEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etRegisterLastName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="5dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <EditText
+        android:id="@+id/etRegisterUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etRegisterEmailAddress"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="5dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/user_name"
+        android:inputType="textPersonName"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <EditText
+        android:id="@+id/etRegisterFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="40dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <EditText
+        android:id="@+id/etRegisterConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etRegisterPassword"
+        android:layout_below="@+id/etRegisterPassword"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="5dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/password_confirmation"
+        android:inputType="textPassword"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <EditText
+        android:id="@+id/etRegisterPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etRegisterUserName"
+        android:layout_below="@+id/etRegisterUserName"
+        android:layout_marginRight="20dp"
+<<<<<<< HEAD
+        android:layout_marginTop="5dp"
+=======
+        android:layout_marginTop="10dp"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:background="@drawable/button_style"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+<<<<<<< HEAD
+        android:padding="10sp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etRegisterConfirmPassword"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/etRegisterConfirmPassword"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_style"
+        android:text="@string/sign_up"
+        android:textColor="@android:color/white" />
+=======
+        android:padding="10sp" />
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+
+    <CheckBox
+        android:id="@+id/chkBoxTermsConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnRegister"
+<<<<<<< HEAD
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+=======
+        android:layout_alignRight="@+id/btnRegister"
+>>>>>>> b07c3dfb81d38c8c5dde0729230fd91c02651368
+        android:text="@string/terms_conditions"
+        android:textSize="12sp" />
+
+</RelativeLayout>
